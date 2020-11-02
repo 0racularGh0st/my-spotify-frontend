@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import { getUserInfo, logout } from "../spotify";
+import { getUserInfo, logout} from "../spotify";
 import { catchErrors } from "../utils";
 export default {
   data() {

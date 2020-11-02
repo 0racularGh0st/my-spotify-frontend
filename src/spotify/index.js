@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getHashParams } from '../utils';
-const backend_uri = process.env.BACKEND_URI || "http://localhost:8888";
+const backend_uri = "https://my-spotify-backend-service.herokuapp.com";
 // TOKENS ******************************************************************************************
 const EXPIRATION_TIME = 3600 * 1000; // 3600 seconds * 1000 = 1 hour in milliseconds
 
@@ -15,7 +15,7 @@ const getLocalAccessToken = () => window.localStorage.getItem('spotify_access_to
 const getLocalRefreshToken = () => window.localStorage.getItem('spotify_refresh_token');
 
 // Refresh the token
-const refreshAccessToken = async () => {
+export const refreshAccessToken = async () => {
   try {
     const { data } = await axios.get(`${backend_uri}/refresh_token?refresh_token=${getLocalRefreshToken()}`);
     const { access_token } = data;
