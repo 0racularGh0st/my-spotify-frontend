@@ -118,5 +118,6 @@ export default {
   color: var(--item-text-color);
   text-transform: uppercase;
   font-size: var(--fs-small);
+  font-weight: 600;
 }
 </style>

@@ -44,6 +44,8 @@
     text-decoration: none;
     color: var(--main-white);
     font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
   }
   &:hover{
     background: var(--alt-green);
