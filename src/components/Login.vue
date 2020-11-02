@@ -10,7 +10,7 @@
         alt="logo"
       />
       <h1 class="app-name">My Spotify Profile</h1>
-      <a href="http://localhost:8888/login" class="login-button"
+      <a href="http://localhost:8888/login" rel="noopener noreferrer" class="login-button"
         ><h2 class="login">Login with Spotify</h2></a
       >
       <h3 class="disclaimer">
@@ -23,7 +23,7 @@
 <style lang="scss" scoped>
 .login-page {
   position: relative;
-  background: #121212;
+  background: var(--bg-color);
   height: 100vh;
   width: 100vw;
 }
@@ -36,25 +36,25 @@
   margin-top: 34vh;
 }
 .app-name {
-  color: #ffffff;
+  color: var(--main-white);
 }
 .login-button {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--main-white);
 }
 .login {
-  background: #1ba74b;
+  background:var(--alt-green);
   width: max-content;
   margin: auto;
-  padding: 1rem 2rem;
+  padding: .7rem 2rem;
   border-radius: 2rem;
   transition: all 0.3s ease;
 }
 .login:hover{
-  background: #21d760;
+  background: var(--main-green);
 }
 .disclaimer {
-  color: #ffffff;
+  color: var(--main-white);
   opacity: 0.6;
   width: 90%;
   margin: 2rem auto;

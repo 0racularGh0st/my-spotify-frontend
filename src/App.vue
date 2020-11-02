@@ -23,4 +23,10 @@
     }
   }
 }
+:root{
+  --bg-color: #121212;
+  --main-green: #21d760;
+  --alt-green: #1ba74b;
+  --main-white: #ffffff;
+}
 </style>
