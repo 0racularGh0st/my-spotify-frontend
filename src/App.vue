@@ -43,6 +43,7 @@ export default {
   --main-white: #ffffff;
   --item-text-color: #ffffffb3;
   --item-value-color: #1ba74b;
+  --nav-item-hover-color: #333232;
   --fs-small: 12px;
 }
 .content-container {
