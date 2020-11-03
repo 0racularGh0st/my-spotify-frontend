@@ -1,28 +1,26 @@
 <template>
-  <Navbar v-if="!inLoginPage"/>
+  <Navbar v-if="!inLoginPage" />
   <router-view />
 </template>
 <script>
 import Navbar from "./components/Navbar";
 export default {
-  data(){
-      return {
-        isLoginPage: true,
-        location: window.location.pathname || '/'
-      }
+  data() {
+    return {
+      isLoginPage: true,
+      location: window.location.pathname || "/",
+    };
   },
-  components:{
-    Navbar
+  components: {
+    Navbar,
   },
   computed: {
-    inLoginPage: function(){
-     if(this.location==="/")
-       return true;
-     else
-     return false;
-    }
-  }
-}
+    inLoginPage: function () {
+      if (this.location === "/") return true;
+      else return false;
+    },
+  },
+};
 </script>
 <style lang="scss">
 #app {
@@ -41,6 +39,7 @@ export default {
   --main-green: #21d760;
   --alt-green: #1ba74b;
   --main-white: #ffffff;
+  --alt-white: #9e9e9e;
   --item-text-color: #ffffffb3;
   --item-value-color: #1ba74b;
   --nav-item-hover-color: #333232;
@@ -49,12 +48,13 @@ export default {
 .content-container {
   padding-top: 4rem;
 }
-@media (min-width: 769px){
+@media (min-width: 769px) {
   .content-container {
-  padding-top: 4rem;
-  padding-left: 80px;
-  padding-bottom: 20vh;
-}
+    padding-top: 4rem;
+    padding-left: 120px;
+    padding-right: 40px;
+    padding-bottom: 20vh;
+  }
 }
 .theme-button {
   border: 1.5px solid var(--alt-green);
@@ -68,7 +68,7 @@ export default {
     font-weight: 600;
     letter-spacing: 1px;
   }
-  &:hover{
+  &:hover {
     background: var(--alt-green);
   }
 }
