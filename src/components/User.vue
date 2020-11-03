@@ -85,8 +85,8 @@ export default {
 <style lang="scss" scoped>
 .user-profile {
   position: relative;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background: var(--bg-color);
 }
 .user-overview {
@@ -99,6 +99,7 @@ export default {
 }
 .name{
   color: var(--main-white);
+  margin-bottom: 0;
 }
 .follow-details{
   display: flex; 

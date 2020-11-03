@@ -1,7 +1,29 @@
 <template>
+  <Navbar v-if="!inLoginPage"/>
   <router-view />
 </template>
-
+<script>
+import Navbar from "./components/Navbar";
+export default {
+  data(){
+      return {
+        isLoginPage: true,
+        location: window.location.pathname || '/'
+      }
+  },
+  components:{
+    Navbar
+  },
+  computed: {
+    inLoginPage: function(){
+     if(this.location==="/")
+       return true;
+     else
+     return false;
+    }
+  }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -9,20 +31,11 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 :root {
   --bg-color: #121212;
   --main-green: #21d760;
@@ -34,6 +47,13 @@
 }
 .content-container {
   padding-top: 4rem;
+}
+@media (min-width: 769px){
+  .content-container {
+  padding-top: 4rem;
+  padding-left: 80px;
+  padding-bottom: 20vh;
+}
 }
 .theme-button {
   border: 1.5px solid var(--alt-green);
