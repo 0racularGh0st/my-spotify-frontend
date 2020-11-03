@@ -13,10 +13,11 @@
     <div class="nav-links-container">
       <div class="nav-links">
         <a
+          id="profile"
           href="/user"
           rel="noopener noreferrer"
           aria-label=""
-          class="nav-item active"
+          class="nav-item"
         >
           <img
             src="../assets/profile.svg"
@@ -97,10 +98,18 @@
   </nav>
 </template>
 <script>
+const navItems = () => { 
+      const profile=document.getElementById("profile"); 
+                if(window.location.pathname === '/user')
+                profile.classList.add("isactive");
+      }
 export default {
   data() {
     return {};
   },
+  mounted(){
+      navItems();
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -153,18 +162,6 @@ nav {
         transition: height .3s ease;
         opacity: 0;
       }
-    &:active{
-        &::before {
-        content: "";
-        height: 100%;
-        width: 5px;
-        background: var(--alt-green);
-        position: absolute;
-        left: 0;
-        transition: height .3s ease;
-        opacity: 1;
-      }
-    }
     &:hover {
       background: var(--nav-item-hover-color);
       .nav-item-img {
@@ -179,6 +176,18 @@ nav {
       }
     }
   }
+  .isactive{
+        &::before {
+        content: "";
+        height: 100%;
+        width: 5px;
+        background: var(--alt-green);
+        position: absolute;
+        left: 0;
+        transition: height .3s ease;
+        opacity: 1;
+      }
+    }
   .nav-item-img {
     opacity: 0.7;
     transition: all 0.3s ease;
