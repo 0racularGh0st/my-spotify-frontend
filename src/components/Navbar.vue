@@ -182,6 +182,25 @@ export default {
       }
     }
   }
+  .isactive {
+    &::before {
+     content: "";
+      height: 3px;
+      width: 100%;
+      background: var(--alt-green);
+      position: absolute;
+      top: 0;
+      transition: height 0.3s ease;
+      opacity: 1;
+    }
+  }
+  .nav-item-text {
+    text-decoration: none;
+    color: var(--main-white);
+    opacity: 0.7;
+    font-size: 12px;
+    transition: all 0.3s ease;
+  }
 }
 @media screen and (min-width: 769px) {
   nav {
