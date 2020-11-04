@@ -30,7 +30,8 @@
           <div class="nav-item-text">Profile</div>
         </a>
         <a
-          href="javascript:;"
+          id="top_tracks"
+          href="/top_tracks"
           rel="noopener noreferrer"
           aria-label=""
           class="nav-item"
@@ -100,7 +101,10 @@
 <script>
 const navItems = () => {
   const profile = document.getElementById("profile");
+  const toptracks = document.getElementById("top_tracks");
+
   if (window.location.pathname === "/user") profile.classList.add("isactive");
+  if (window.location.pathname === "/top_tracks") toptracks.classList.add("isactive");
 };
 export default {
   data() {

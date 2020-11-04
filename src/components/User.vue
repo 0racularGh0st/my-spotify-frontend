@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="theme-button">
-          <a href=":javascript;" @click="signout()">LOGOUT</a>
+          <a href="javascript:;" @click="signout()">LOGOUT</a>
         </div>
       </div>
       <div class="tracks_artists">
