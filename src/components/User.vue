@@ -1,5 +1,8 @@
 <template>
   <div class="user-profile">
+    <div v-if="!dataReady">
+      <Loader/>
+    </div>
     <div class="user-container content-container" v-if="dataReady">
       <div class="user-overview">
         <img
@@ -85,6 +88,7 @@
 <script>
 import { getUserInfo, logout } from "../spotify";
 import { catchErrors, formatDuration } from "../utils";
+import Loader from './Loader';
 export default {
   data() {
     return {
@@ -138,6 +142,9 @@ export default {
     },
     formatDuration: formatDuration,
   },
+  components:{
+    Loader
+  }
 };
 </script>
 <style lang="scss" scoped>
