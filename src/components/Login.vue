@@ -14,8 +14,8 @@
         ><h2 class="login">Login with Spotify</h2></a
       >
       <h3 class="disclaimer">
-        Note: Login process is done through Spotify's authorization flow. No
-        Login information is store in this site.
+        Note: Login process is done through Spotify's official authorization flow. No
+        Login information is stored in this site.
       </h3>
     </div>
   </div>

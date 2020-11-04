@@ -35,10 +35,14 @@
       </div>
       <div class="tracks_artists">
         <div>
-          <div class="top-tracks-artists-heading"><h2>Top Tracks</h2></div>
-          <div class="tracks-grid">
+          <div class="top-tracks-artists-heading"><h2>Top 10 Tracks</h2></div>
+          <div
+            class="tracks-grid"
+            v-for="(item, index) in topTracks.items.slice(0, 10)"
+            v-bind:key="index"
+          >
             <img
-              :src="topTracks.items[0].album.images[2].url"
+              :src="item.album.images[2].url"
               height="50"
               width="50"
               alt="track-art"
@@ -46,17 +50,33 @@
             />
             <div class="track-data">
               <div class="track-data-name">
-                <div class="track-name">{{topTracks.items[0].name}}</div>
+                <div class="track-name">{{ item.name }}</div>
                 <div class="track-artist-album">
-                  {{topTracks.items[0].artists[0].name}} &nbsp;·&nbsp; {{topTracks.items[0].album.name}}
+                  {{ item.artists[0].name }} &nbsp;·&nbsp; {{ item.album.name }}
                 </div>
               </div>
-              <div class="track-data-time">{{formatDuration(topTracks.items[0].duration_ms)}}</div>
+              <div class="track-data-time">
+                {{ formatDuration(item.duration_ms) }}
+              </div>
             </div>
           </div>
         </div>
         <div>
-          <div class="top-tracks-artists-heading"><h2>Top Artists</h2></div>
+          <div class="top-tracks-artists-heading"><h2>Top 10 Artists</h2></div>
+          <div
+            class="artist-grid"
+            v-for="(item, index) in topArtists.items.slice(0, 10)"
+            v-bind:key="index"
+          >
+            <img
+              :src="item.images[2].url"
+              height="50"
+              width="50"
+              alt="artist-art"
+              class="artist-art"
+            />
+            <div class="artist-name">{{ item.name }}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -116,7 +136,7 @@ export default {
     signout: function () {
       logout();
     },
-    formatDuration: formatDuration
+    formatDuration: formatDuration,
   },
 };
 </script>
@@ -161,7 +181,7 @@ export default {
 .tracks_artists {
   margin-top: 60px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .tracks_artists {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -173,6 +193,12 @@ export default {
 .top-tracks-artists-heading {
   color: var(--main-white);
 }
+@media screen and (max-width: 768px){
+.top-tracks-artists-heading {
+  color: var(--main-white);
+  margin-top: 60px;
+}
+}
 .tracks-grid {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -183,6 +209,14 @@ export default {
 .track-art {
   display: inline-block;
   margin-right: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px -8px var(--alt-white);
+}
+.artist-art {
+  display: inline-block;
+  margin-right: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px -8px var(--alt-white);
 }
 .track-data {
   display: grid;
@@ -194,9 +228,7 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   padding-right: 1px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  text-align: left;
 }
 .track-data-time {
   color: var(--alt-white);
@@ -221,4 +253,21 @@ export default {
   font-size: 14px;
   margin-top: 3px;
 }
+.artist-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.artist-name {
+  color: var(--main-white);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+}
+
 </style>

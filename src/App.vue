@@ -47,13 +47,16 @@ export default {
 }
 .content-container {
   padding-top: 4rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 5rem;
 }
 @media (min-width: 769px) {
   .content-container {
     padding-top: 4rem;
     padding-left: 120px;
     padding-right: 40px;
-    padding-bottom: 20vh;
+    padding-bottom: 5rem;
   }
 }
 .theme-button {
