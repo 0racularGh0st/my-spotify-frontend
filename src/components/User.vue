@@ -6,7 +6,7 @@
     <div class="user-container content-container" v-if="dataReady">
       <div class="user-overview">
         <img
-          :src="user.images[0].url"
+          :src="user.images[0]!==undefined?user.images[0].url : dummyPic"
           height="192"
           width="192"
           aria-label="user-pic"
@@ -86,12 +86,14 @@
   </div>
 </template>
 <script>
+import Loader from './Loader';
 import { getUserInfo, logout } from "../spotify";
 import { catchErrors, formatDuration } from "../utils";
-import Loader from './Loader';
+import dummypic from '../assets/dummypic.png';
 export default {
   data() {
     return {
+      dummyPic: dummypic,
       user: null,
       followedArtists: null,
       playlists: null,
