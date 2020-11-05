@@ -47,7 +47,8 @@
           <div class="nav-item-text">Top Tracks</div>
         </a>
         <a
-          href="javascript:;"
+          id="top_artists"
+          href="/top_artists"
           rel="noopener noreferrer"
           aria-label=""
           class="nav-item"
@@ -102,9 +103,11 @@
 const navItems = () => {
   const profile = document.getElementById("profile");
   const toptracks = document.getElementById("top_tracks");
+  const topArtists = document.getElementById("top_artists");
 
   if (window.location.pathname === "/user") profile.classList.add("isactive");
   if (window.location.pathname === "/top_tracks") toptracks.classList.add("isactive");
+  if (window.location.pathname === "/top_artists") topArtists.classList.add("isactive");
 };
 export default {
   data() {
@@ -197,6 +200,10 @@ export default {
       transition: height 0.3s ease;
       opacity: 1;
     }
+  }
+  .nav-item-img {
+    opacity: 0.7;
+    transition: all 0.3s ease;
   }
   .nav-item-text {
     text-decoration: none;
