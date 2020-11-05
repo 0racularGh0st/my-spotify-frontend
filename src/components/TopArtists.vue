@@ -33,10 +33,9 @@
         </div>
         <div
           class="artist-container"
-          v-for="(item, index) in topArtistsSelected.items"
-          v-bind:key="index"
         >
-          <div class="artist-inner">
+          <div class="artist-inner"  v-for="(item, index) in topArtistsSelected.items"
+          v-bind:key="index">
               <img
             :src="item.images[1].url"
             alt="artist-art"
@@ -134,13 +133,24 @@ export default {
   width: 100%;
   background: var(--bg-color);
 }
-.artist-container{
+.artist-inner{
     display: inline-flex;
 }
 @media screen and (min-width: 769px) {
-  .artist-container{
+    .artist-name {
+  color: var(--main-white);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 1rem;
+  width: 200px;
+}
+  .artist-inner{
       width: 200px;
       margin-bottom: 3rem;
+      margin-left: 1rem;
+    margin-right: 1rem;
   }
   .top-tracks-artists-heading {
     color: var(--main-white);
@@ -168,12 +178,20 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-    .artist-name{
-        font-size: 14px;
-    }
-  .artist-container{
+    .artist-name {
+  color: var(--main-white);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 1rem;
+  width: 120px;
+}
+  .artist-inner{
       width: 120px;
       margin-bottom: 2rem;
+          margin-left: 0.75rem;
+    margin-right: 0.75rem;
   }
   .top-tracks-artists-heading {
     color: var(--main-white);
@@ -229,14 +247,7 @@ export default {
   }
 }
 
-.artist-name {
-  color: var(--main-white);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 16px;
-  font-weight: 500;
-  margin-top: 1rem;
-}
+
 
 .content-container {
   padding-top: 2rem;
