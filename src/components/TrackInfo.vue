@@ -1,21 +1,33 @@
 <template>
-    <div class="track-info">
-         <div v-if="!dataReady">
-            <Loader/>
-        </div>
-        <div class="content-container" v-if="dataReady">
-            <div class="info-container">
-                <div class="album-art">
-                <img :src="trackInfo.album.images[1].url" alt="album-art" height="220" width="220">
-            </div>
-            <div class="track-artist-album">
-                <h2 class="track-name">{{trackInfo.name}}</h2>
-                <h3 class="artist-name">{{trackInfo.artists[0].name}}</h3>
-                <p class="album-name">{{trackInfo.album.name}}&nbsp;·&nbsp;{{trackInfo.album.release_date.slice(0,4)}}</p>
-            </div>
-            </div>
-        </div>
+  <div class="track-info">
+    <div v-if="!dataReady">
+      <Loader />
     </div>
+    <div class="content-container" v-if="dataReady">
+      <div class="info-container">
+        <div class="album-art">
+          <img
+            :src="trackInfo.album.images[1].url"
+            alt="album-art"
+            height="220"
+            width="220"
+          />
+        </div>
+        <div class="track-artist-album">
+          <h2 class="track-name">{{ trackInfo.name }}</h2>
+          <h3 class="artist-name">{{ trackInfo.artists[0].name }}</h3>
+          <p class="album-name">
+            {{ trackInfo.album.name }}&nbsp;·&nbsp;{{
+              trackInfo.album.release_date.slice(0, 4)
+            }}
+          </p>
+          <div class="theme-button-filled">
+            <a :href="openSpotifyLink(trackInfo.external_urls.spotify)" target="_blank" rel="noopener noreferrer">PLAY ON SPOTIFY</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import Loader from "./Loader";
@@ -39,16 +51,24 @@ export default {
       this.dataReady = true;
       console.log("Res->", this.trackInfo);
     },
+    openSpotifyLink: function(url){
+        return url;
+    }
   },
   components: {
-      Loader
-  }
+    Loader,
+  },
 };
 </script>
 <style lang="scss" scoped>
-h2,h3,p{
-    margin: 0.2rem 0;
-    color: var(--main-white);
+h2,
+h3,
+p {
+  margin: 0.2rem 0;
+  color: white;
+}
+.theme-button-filled{
+    margin-top: 1rem;
 }
 .track-info {
   position: relative;
@@ -56,39 +76,39 @@ h2,h3,p{
   width: 100%;
   background: var(--bg-color);
 }
-.album-art{
+.album-art {
+  display: inline-block;
+  height: 220px;
+}
+.artist-name {
+  opacity: 0.8;
+}
+.album-name {
+  opacity: 0.6;
+}
+@media screen and (max-width: 500px) {
+  .info-container {
     display: inline-block;
-}
-.artist-name{
-    opacity: 0.8;
-}
-.album-name{
-    opacity: 0.6;
-}
-@media screen and (max-width: 479px){
-    .info-container{
-        display: inline-block;
-        margin-bottom: 2rem;
-    }
-    .track-artist-album{
+    margin-bottom: 2rem;
+  }
+  .track-artist-album {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
 }
-}
-@media screen and (min-width: 480px){
-    .info-container{
-        display: flex;
-        margin-bottom: 2rem;
-    }
-    .track-artist-album{
+@media screen and (min-width: 501px) {
+  .info-container {
+    display: flex;
+    margin-bottom: 2rem;
+  }
+  .track-artist-album {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
     margin-left: 2rem;
+    text-align: left;
+  }
 }
-}
-
-
 </style>

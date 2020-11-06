@@ -6,7 +6,7 @@
     <div class="content-container" v-if="dataReady">
       <div>
         <div class="my-playlist-heading">
-          <h2>My playlists</h2>
+          <h2>My Playlists</h2>
         </div>
         <div
           class="my-playlist-container"

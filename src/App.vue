@@ -69,10 +69,27 @@ export default {
     color: var(--main-white);
     font-size: 12px;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
   }
   &:hover {
     background: var(--alt-green);
+  }
+}
+.theme-button-filled {
+  border: 1.5px solid var(--alt-green);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  background: var(--alt-green);
+  a {
+    text-decoration: none;
+    color: var(--main-white);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+  }
+  &:hover {
+    background: var(--main-green);
   }
 }
 </style>
