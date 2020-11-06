@@ -250,7 +250,7 @@ export default {
 
 
 .content-container {
-  padding-top: 2rem;
+  padding-top: 3.5rem;
 }
 @media screen and (max-width:768px){
     .content-container {

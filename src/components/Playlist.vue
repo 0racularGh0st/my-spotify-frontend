@@ -111,14 +111,7 @@ export default {
     justify-content: space-between;
     margin-bottom: 2rem;
   }
-  .duration-filter {
-    font-size: 16px;
-    display: flex;
-    justify-content: space-evenly;
-  }
-  .duration {
-    margin-left: 1rem;
-  }
+
   .playlist-art {
     height: 150px;
     width: 150px;
@@ -160,12 +153,6 @@ export default {
     }
     display: block;
   }
-  .duration-filter {
-    font-size: 14px;
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 1.5rem;
-  }
   .playlist-art {
     height: 100px;
     width: 100px;
@@ -173,50 +160,14 @@ export default {
     box-shadow: 0 0 20px -8px var(--alt-white);
   }
 }
-.duration {
-  opacity: 0.8;
-  position: relative;
-  height: max-content;
-  cursor: pointer;
-  &::before {
-    content: "";
-    position: absolute;
-    height: 1px;
-    width: 0%;
-    background: var(--main-green);
-    bottom: 0;
-    transition: width 0.3s ease;
-  }
-  &:hover {
-    opacity: 1;
-    &::before {
-      width: 100%;
-    }
-  }
-}
-.duration-active {
-  opacity: 1;
-  &::before {
-    content: "";
-    position: absolute;
-    height: 1px;
-    width: 100%;
-    background: var(--main-green);
-    bottom: 0;
-    transition: width 0.3s ease;
-  }
-}
-
-
 
 .content-container {
-  padding-top: 2rem;
+  padding-top: 3rem;
 }
 @media screen and (max-width:768px){
     .content-container {
   padding-right: 1rem;
   padding-left: 1rem;
 }
-   
 }
 </style>

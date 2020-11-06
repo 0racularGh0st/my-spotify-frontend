@@ -239,6 +239,6 @@ export default {
   margin-top: 3px;
 }
 .content-container {
-    padding-top: 2rem;
+    padding-top: 3.5rem;
 }
 </style>
