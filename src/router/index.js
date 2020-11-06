@@ -24,6 +24,11 @@ const routes = [
     path: '/top_artists',
     name: 'TopArtists',
     component: () => import(/* webpackChunkName: "topartists" */ '../components/TopArtists.vue')
+  },
+  {
+    path: '/recently_played',
+    name: 'RecentlyPlayed',
+    component: () => import(/* webpackChunkName: "recentlyplayed" */ '../components/Recent.vue')
   }
 ]
 

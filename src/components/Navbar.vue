@@ -64,7 +64,8 @@
           <div class="nav-item-text">Top Artists</div>
         </a>
         <a
-          href="javascript:;"
+          id="recent"
+          href="/recently_played"
           rel="noopener noreferrer"
           aria-label=""
           class="nav-item"
@@ -104,10 +105,12 @@ const navItems = () => {
   const profile = document.getElementById("profile");
   const toptracks = document.getElementById("top_tracks");
   const topArtists = document.getElementById("top_artists");
+  const recentlyPlayed = document.getElementById("recent");
 
   if (window.location.pathname === "/user") profile.classList.add("isactive");
   if (window.location.pathname === "/top_tracks") toptracks.classList.add("isactive");
   if (window.location.pathname === "/top_artists") topArtists.classList.add("isactive");
+  if (window.location.pathname === "/recently_played") recentlyPlayed.classList.add("isactive");
 };
 export default {
   data() {

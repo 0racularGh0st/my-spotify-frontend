@@ -54,8 +54,8 @@ export default {
 @media (min-width: 769px) {
   .content-container {
     padding-top: 4rem;
-    padding-left: 120px;
-    padding-right: 40px;
+    padding-left: 200px;
+    padding-right: 120px;
     padding-bottom: 5rem;
   }
 }
