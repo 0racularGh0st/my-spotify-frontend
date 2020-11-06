@@ -39,11 +39,12 @@
       <div class="tracks_artists">
         <div>
           <div class="top-tracks-artists-heading"><h2>Top 10 Tracks</h2></div>
-          <div
+          <a
             class="tracks-grid"
             v-for="(item, index) in topTracks.items.slice(0, 10)"
             v-bind:key="index"
-          >
+            :href = "getTrackHrefValue(item.id)"
+            >
             <img
               :src="item.album.images[2].url"
               height="50"
@@ -62,7 +63,7 @@
                 {{ formatDuration(item.duration_ms) }}
               </div>
             </div>
-          </div>
+          </a>
         </div>
         <div>
           <div class="top-tracks-artists-heading"><h2>Top 10 Artists</h2></div>
@@ -88,7 +89,7 @@
 <script>
 import Loader from './Loader';
 import { getUserInfo, logout } from "../spotify";
-import { catchErrors, formatDuration } from "../utils";
+import { catchErrors, formatDuration , getTrackHrefValue} from "../utils";
 import dummypic from '../assets/dummypic.png';
 export default {
   data() {
@@ -143,6 +144,7 @@ export default {
       logout();
     },
     formatDuration: formatDuration,
+    getTrackHrefValue: getTrackHrefValue
   },
   components:{
     Loader
@@ -171,8 +173,6 @@ export default {
 .follow-details {
   display: flex;
   margin-bottom: 1rem;
-}
-.follow-detail {
 }
 .add-margin {
   margin: 0 1.25rem;
@@ -214,6 +214,7 @@ export default {
   -webkit-box-align: center;
   align-items: center;
   margin-bottom: 30px;
+  text-decoration: none;
 }
 .track-art {
   display: inline-block;

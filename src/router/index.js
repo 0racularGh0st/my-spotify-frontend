@@ -34,6 +34,11 @@ const routes = [
     path: '/playlists',
     name: 'Playlists',
     component: () => import(/* webpackChunkName: "playlists" */ '../components/Playlist.vue')
+  },
+  {
+    path: '/track/:trackId',
+    name: 'TrackInfo',
+    component: () => import(/* webpackChunkName: "trackinfo" */ '../components/TrackInfo.vue')
   }
 
 ]

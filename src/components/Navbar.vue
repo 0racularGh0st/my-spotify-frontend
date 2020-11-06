@@ -108,7 +108,7 @@ const navItems = () => {
   const topArtists = document.getElementById("top_artists");
   const recentlyPlayed = document.getElementById("recent");
   const playlist = document.getElementById("playlist");
-  if (window.location.pathname === "/user") profile.classList.add("isactive");
+  if (window.location.pathname.startsWith("/user")) profile.classList.add("isactive");
   if (window.location.pathname === "/top_tracks") toptracks.classList.add("isactive");
   if (window.location.pathname === "/top_artists") topArtists.classList.add("isactive");
   if (window.location.pathname === "/recently_played") recentlyPlayed.classList.add("isactive");

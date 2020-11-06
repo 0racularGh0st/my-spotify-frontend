@@ -74,7 +74,9 @@ export const getHashParams = () => {
   
     return key;
   };
-  
+  export const getTrackHrefValue = trackId => {
+    return `/track/${trackId}`;
+  }
   export const formatWithCommas = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   
   // Higher-order function for async/await error handling
