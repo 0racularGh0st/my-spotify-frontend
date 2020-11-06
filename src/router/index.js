@@ -29,7 +29,13 @@ const routes = [
     path: '/recently_played',
     name: 'RecentlyPlayed',
     component: () => import(/* webpackChunkName: "recentlyplayed" */ '../components/Recent.vue')
+  },
+  {
+    path: '/playlists',
+    name: 'Playlists',
+    component: () => import(/* webpackChunkName: "playlists" */ '../components/Playlist.vue')
   }
+
 ]
 
 const router = createRouter({
