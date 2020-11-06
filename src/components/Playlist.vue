@@ -5,22 +5,22 @@
     </div>
     <div class="content-container" v-if="dataReady">
       <div>
-        <div class="top-tracks-artists-heading">
+        <div class="my-playlist-heading">
           <h2>My playlists</h2>
         </div>
         <div
-          class="artist-container"
+          class="my-playlist-container"
         >
-          <div class="artist-inner"  v-for="(item, index) in myPlaylist.items"
+          <div class="playlist-inner"  v-for="(item, index) in myPlaylist.items"
           v-bind:key="index">
               <img
             :src="item.images[0].url"
-            alt="artist-art"
-            class="artist-art"
+            alt="playlist-art"
+            class="playlist-art"
             height="200"
             width="200"
           />
-          <div class="artist-name">{{ item.name }}</div>
+          <div class="playlist-name">{{ item.name }}</div>
           <div class="number_tracks">{{item.tracks.total}} Tracks</div>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.artist-inner{
+.playlist-inner{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,11 +73,11 @@ export default {
   width: 100%;
   background: var(--bg-color);
 }
-.artist-inner{
+.playlist-inner{
     display: inline-flex;
 }
 @media screen and (min-width: 769px) {
-    .artist-name {
+    .playlist-name {
   color: var(--main-white);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -96,13 +96,13 @@ export default {
   margin-top: 3px;
   width: 200px;
 }
-  .artist-inner{
+  .playlist-inner{
       width: 200px;
       margin-bottom: 3rem;
       margin-left: 1rem;
     margin-right: 1rem;
   }
-  .top-tracks-artists-heading {
+  .my-playlist-heading {
     color: var(--main-white);
     h2 {
       margin-top: 0;
@@ -119,7 +119,7 @@ export default {
   .duration {
     margin-left: 1rem;
   }
-  .artist-art {
+  .playlist-art {
     height: 150px;
     width: 150px;
     border-radius: 50%;
@@ -128,7 +128,7 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-    .artist-name {
+    .playlist-name {
   color: var(--main-white);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -147,13 +147,13 @@ export default {
   margin-top: 3px;
   width: 200px;
 }
-  .artist-inner{
+  .playlist-inner{
       width: 120px;
       margin-bottom: 2rem;
           margin-left: 0.75rem;
     margin-right: 0.75rem;
   }
-  .top-tracks-artists-heading {
+  .my-playlist-heading {
     color: var(--main-white);
     h2 {
       margin-top: 0;
@@ -166,7 +166,7 @@ export default {
     justify-content: space-evenly;
     margin-bottom: 1.5rem;
   }
-  .artist-art {
+  .playlist-art {
     height: 100px;
     width: 100px;
     border-radius: 50%;

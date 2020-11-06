@@ -1,11 +1,11 @@
 <template>
-  <div class="top-tracks">
+  <div class="recently-played">
     <div v-if="!dataReady">
       <Loader />
     </div>
     <div class="content-container" v-if="dataReady">
       <div>
-        <div class="top-tracks-artists-heading"><h2>Recently Played</h2></div>
+        <div class="recently-played-heading"><h2>Recently Played</h2></div>
         <div
           class="tracks-grid"
           v-for="(item, index) in recentlyPlayed.items"
@@ -64,14 +64,14 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.top-tracks {
+.recently-played {
   position: relative;
   height: 100%;
   width: 100%;
   background: var(--bg-color);
 }
 @media screen and (min-width: 769px) {
-  .top-tracks-artists-heading {
+  .recently-played-heading {
     color: var(--main-white);
     h2 {
       margin-top: 0;
@@ -91,7 +91,7 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .top-tracks-artists-heading {
+  .recently-played-heading {
     color: var(--main-white);
     h2 {
       margin-top: 0;
