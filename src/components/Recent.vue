@@ -80,14 +80,6 @@ export default {
     justify-content: space-between;
     margin-bottom: 2rem;
   }
-  .duration-filter {
-    font-size: 16px;
-    display: flex;
-    justify-content: space-evenly;
-  }
-  .duration {
-    margin-left: 1rem;
-  }
 }
 
 @media screen and (max-width: 768px) {
@@ -98,46 +90,9 @@ export default {
     }
     display: block;
   }
-  .duration-filter {
-    font-size: 14px;
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 1.5rem;
-  }
 }
-.duration {
-  opacity: 0.8;
-  position: relative;
-  height: max-content;
-  cursor: pointer;
-  &::before {
-    content: "";
-    position: absolute;
-    height: 1px;
-    width: 0%;
-    background: var(--main-green);
-    bottom: 0;
-    transition: width 0.3s ease;
-  }
-  &:hover {
-    opacity: 1;
-    &::before {
-      width: 100%;
-    }
-  }
-}
-.duration-active {
-  opacity: 1;
-  &::before {
-    content: "";
-    position: absolute;
-    height: 1px;
-    width: 100%;
-    background: var(--main-green);
-    bottom: 0;
-    transition: width 0.3s ease;
-  }
-}
+
+
 .tracks-grid {
   display: grid;
   grid-template-columns: auto 1fr;

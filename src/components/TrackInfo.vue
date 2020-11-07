@@ -26,13 +26,66 @@
           </div>
         </div>
       </div>
+      <div class="track-info-data">
+          <div class="info">
+              <div class="info-value">
+                {{ formatDuration(trackInfo.duration_ms) }}
+                </div> 
+                <div class="info-name">
+                  Duration
+                </div>
+          </div>
+          <div class="info">
+            <div class="info-value">
+                {{parsePitchClass(audiFeatures.key)}}
+                </div> 
+                <div class="info-name">
+                  Key
+                </div> 
+          </div>
+          <div class="info">
+            <div class="info-value">
+               {{audiFeatures.mode === 1? 'Major' : 'Minor'}}
+                </div> 
+                <div class="info-name">
+                 Modality
+                </div> 
+               
+          </div>
+          </div>
+          <div class="track-info-data">
+          <div class="info">
+              <div class="info-value">
+               {{audiFeatures.time_signature}}
+                </div> 
+                <div class="info-name">
+                 Time Signature
+                </div> 
+          </div>
+          <div class="info">
+              <div class="info-value">
+               {{Math.round(audiFeatures.tempo)}}
+                </div> 
+                <div class="info-name">
+                 Tempo (BPM)
+                </div> 
+          </div>
+          <div class="info">
+              <div class="info-value">
+               {{trackInfo.popularity}}%
+                </div> 
+                <div class="info-name">
+                 Popularity
+                </div> 
+          </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import Loader from "./Loader";
-import { getTrack } from "../spotify";
-import { catchErrors } from "../utils";
+import { getTrack, getTrackAudioFeatures} from "../spotify";
+import { catchErrors, formatDuration, parsePitchClass} from "../utils";
 export default {
   created() {
     catchErrors(this.getTrackData());
@@ -42,18 +95,24 @@ export default {
       trackId: this.$route.params.trackId,
       dataReady: false,
       trackInfo: null,
+      audiFeatures: null
     };
   },
   methods: {
     getTrackData: async function () {
       let trackInfoRes = await getTrack(this.trackId);
+      let audioFeaturesRes = await getTrackAudioFeatures(this.trackId);
       this.trackInfo = trackInfoRes.data;
+      this.audiFeatures = audioFeaturesRes.data;
       this.dataReady = true;
       console.log("Res->", this.trackInfo);
+      console.log("Res->", this.audiFeatures);
     },
     openSpotifyLink: function(url){
         return url;
-    }
+    },
+    formatDuration : formatDuration,
+    parsePitchClass : parsePitchClass
   },
   components: {
     Loader,
@@ -100,7 +159,7 @@ p {
 @media screen and (min-width: 501px) {
   .info-container {
     display: flex;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
   .track-artist-album {
     display: flex;
@@ -111,4 +170,26 @@ p {
     text-align: left;
   }
 }
+.track-info-data{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.info-value{
+  color: var(--alt-green);
+  font-size: 20px;
+  font-weight: 700;
+}
+.info-name{
+  color: var(--main-white);
+  font-size: 12px;
+  opacity: 0.8;
+}
+.info{
+  padding: 1rem;
+  border: 1px solid var(--alt-white);
+  min-width: 0;
+}
+
+
+
 </style>
