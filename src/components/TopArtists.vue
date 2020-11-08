@@ -34,17 +34,25 @@
         <div
           class="artist-container"
         >
-          <div class="artist-inner"  v-for="(item, index) in topArtistsSelected.items"
-          v-bind:key="index">
+          <a class="artist-inner"  v-for="(item, index) in topArtistsSelected.items"
+          v-bind:key="index"
+          :href="getArtistHrefValue(item.id)"
+          >
+              
+          <div class="track-art-info-container">
               <img
-            :src="item.images[1].url"
-            alt="artist-art"
-            class="artist-art"
-            height="200"
-            width="200"
-          />
+              :src="item.images[2].url"
+              height="50"
+              width="50"
+              alt="artist-art"
+              class="artist-art"
+            />
+              <div class="info-overlay-container">
+                <img src="../assets/info.png" height="50" width="50" class="info-overlay"/>
+              </div>
+            </div>
           <div class="artist-name">{{ item.name }}</div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -57,7 +65,7 @@ import {
   getTopArtistsMedium,
   getTopArtistsShort,
 } from "../spotify";
-import { catchErrors } from "../utils";
+import { catchErrors, getArtistHrefValue } from "../utils";
 export default {
   created() {
     catchErrors(this.getTopArtists());
@@ -80,6 +88,7 @@ export default {
       );
       this.dataReady = true;
     },
+    getArtistHrefValue: getArtistHrefValue,
 
     setDuration: function (duration) {
       document
@@ -126,6 +135,12 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
+    &:hover{
+    .info-overlay-container{
+      opacity: 1;
+    }
+  }
 }
 .top-artists {
   position: relative;
@@ -135,6 +150,11 @@ export default {
 }
 .artist-inner{
     display: inline-flex;
+    &:hover{
+    .info-overlay-container{
+      opacity: 1;
+    }
+  }
 }
 @media screen and (min-width: 769px) {
     .artist-name {
@@ -151,6 +171,11 @@ export default {
       margin-bottom: 3rem;
       margin-left: 1rem;
     margin-right: 1rem;
+    &:hover{
+    .info-overlay-container{
+      opacity: 1;
+    }
+  }
   }
   .top-tracks-artists-heading {
     color: var(--main-white);
@@ -175,6 +200,13 @@ export default {
     border-radius: 50%;
     box-shadow: 0 0 20px -8px var(--alt-white);
   }
+  .track-art-info-container{
+    width: 150px;
+    height: 150px;
+  display: inline-block;
+    position: relative;
+  margin-right: 15px;
+}
 }
 
 @media screen and (max-width: 768px) {
@@ -192,6 +224,12 @@ export default {
       margin-bottom: 2rem;
           margin-left: 0.75rem;
     margin-right: 0.75rem;
+    text-decoration: none;
+    &:hover{
+    .info-overlay-container{
+      opacity: 1;
+    }
+  }
   }
   .top-tracks-artists-heading {
     color: var(--main-white);
@@ -212,6 +250,13 @@ export default {
     border-radius: 50%;
     box-shadow: 0 0 20px -8px var(--alt-white);
   }
+  .track-art-info-container{
+    width: 100px;
+    height: 100px;
+  display: inline-block;
+    position: relative;
+  margin-right: 15px;
+}
 }
 .duration {
   opacity: 0.8;
@@ -258,5 +303,28 @@ export default {
   padding-left: 1rem;
 }
    
+}
+.info-overlay{
+  height: 30px;
+  width: 30px;
+}
+.info-overlay-container{
+  display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    color: rgb(255, 255, 255);
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: 50%;
 }
 </style>
