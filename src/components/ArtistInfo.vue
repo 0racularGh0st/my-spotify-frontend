@@ -38,12 +38,18 @@
                </div>
            </div>
        </div>
+       <div class="theme-button-filled" v-if="!isFollowing">
+          <a href="javascript:;" @click="followArtistNow()">FOLLOW</a>
+       </div>
+       <div class="theme-button-disabled" v-if="isFollowing">
+          <a href="javascript:;">FOLLOWING</a>
+       </div>
     </div>
   </div>
 </template>
 <script>
 import Loader from "./Loader";
-import { getArtist} from "../spotify";
+import { getArtist, doesUserFollowArtist, followArtist} from "../spotify";
 import { catchErrors} from "../utils";
 export default {
   created() {
@@ -54,14 +60,23 @@ export default {
       artistId: this.$route.params.artistId,
       dataReady: false,
       artistInfo: null,
+      isFollowing: null
     };
   },
   methods: {
     getArtistData: async function () {
       let artistInfoRes = await getArtist(this.artistId);
       this.artistInfo = artistInfoRes.data;
+      let following = await doesUserFollowArtist(this.artistId);
+      this.isFollowing = following.data[0];
       this.dataReady = true;
       console.log("Res->", this.artistInfo);
+      console.log("following->", this.isFollowing);
+    },
+    followArtistNow: async function(){
+        let res = await followArtist(this.artistInfo.id);
+        if(res && (res.status === 204 || res.status===200))
+        this.isFollowing=true;
     }
   },
   components: {
@@ -114,5 +129,13 @@ p {
 .artist-detail-item{
     display: flex;
     flex-direction: column;
+}
+.theme-button-disabled{
+    width: max-content;
+    margin: 2rem auto;
+}
+.theme-button-filled{
+    width: max-content;
+    margin: 2rem auto;
 }
 </style>

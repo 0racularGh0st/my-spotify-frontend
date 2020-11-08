@@ -92,4 +92,17 @@ export default {
     background: var(--main-green);
   }
 }
+.theme-button-disabled {
+  border: 1.5px solid var(--alt-green);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  a {
+    text-decoration: none;
+    color: var(--main-white);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+  }
+}
 </style>
