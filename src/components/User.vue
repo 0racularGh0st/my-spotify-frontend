@@ -45,13 +45,18 @@
             v-bind:key="index"
             :href = "getTrackHrefValue(item.id)"
             >
-            <img
+            <div class="track-art-info-container">
+              <img
               :src="item.album.images[2].url"
               height="50"
               width="50"
               alt="track-art"
               class="track-art"
             />
+              <div class="info-overlay-container">
+                <img src="../assets/info.png" height="50" width="50" class="info-overlay"/>
+              </div>
+            </div>
             <div class="track-data">
               <div class="track-data-name">
                 <div class="track-name">{{ item.name }}</div>
@@ -215,6 +220,11 @@ export default {
   align-items: center;
   margin-bottom: 30px;
   text-decoration: none;
+  &:hover{
+    .info-overlay-container{
+      opacity: 1;
+    }
+  }
 }
 .track-art {
   display: inline-block;
@@ -279,5 +289,34 @@ export default {
   font-weight: 500;
   text-align: left;
 }
-
+.track-art-info-container{
+  display: inline-block;
+    position: relative;
+  height: 50px;
+  width: 50px;
+  margin-right: 15px;
+}
+.info-overlay{
+  height: 30px;
+  width: 30px;
+}
+.info-overlay-container{
+  display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    color: rgb(255, 255, 255);
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+}
 </style>
