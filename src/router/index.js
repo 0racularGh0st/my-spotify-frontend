@@ -39,6 +39,11 @@ const routes = [
     path: '/track/:trackId',
     name: 'TrackInfo',
     component: () => import(/* webpackChunkName: "trackinfo" */ '../components/TrackInfo.vue')
+  },
+  {
+    path: '/artist/:artistId',
+    name: 'ArtistInfo',
+    component: () => import(/* webpackChunkName: "artistinfo" */ '../components/ArtistInfo.vue')
   }
 
 ]

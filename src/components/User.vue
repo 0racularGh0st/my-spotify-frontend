@@ -72,20 +72,26 @@
         </div>
         <div>
           <div class="top-tracks-artists-heading"><h2>Top 10 Artists</h2></div>
-          <div
+          <a
             class="artist-grid"
             v-for="(item, index) in topArtists.items.slice(0, 10)"
             v-bind:key="index"
+             :href = "getArtistHrefValue(item.id)"
           >
-            <img
+            <div class="track-art-info-container">
+              <img
               :src="item.images[2].url"
               height="50"
               width="50"
               alt="artist-art"
               class="artist-art"
             />
+              <div class="info-overlay-container">
+                <img src="../assets/info.png" height="50" width="50" class="info-overlay"/>
+              </div>
+            </div>
             <div class="artist-name">{{ item.name }}</div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -94,7 +100,7 @@
 <script>
 import Loader from './Loader';
 import { getUserInfo, logout } from "../spotify";
-import { catchErrors, formatDuration , getTrackHrefValue} from "../utils";
+import { catchErrors, formatDuration , getTrackHrefValue, getArtistHrefValue} from "../utils";
 import dummypic from '../assets/dummypic.png';
 export default {
   data() {
@@ -149,7 +155,8 @@ export default {
       logout();
     },
     formatDuration: formatDuration,
-    getTrackHrefValue: getTrackHrefValue
+    getTrackHrefValue: getTrackHrefValue,
+    getArtistHrefValue: getArtistHrefValue
   },
   components:{
     Loader
@@ -279,6 +286,12 @@ export default {
   -webkit-box-align: center;
   align-items: center;
   margin-bottom: 30px;
+  text-decoration: none;
+  &:hover{
+    .info-overlay-container{
+      opacity: 1;
+    }
+  }
 }
 .artist-name {
   color: var(--main-white);
