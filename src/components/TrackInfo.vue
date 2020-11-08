@@ -37,7 +37,7 @@
           </div>
           <div class="info">
             <div class="info-value">
-                {{parsePitchClass(audiFeatures.key)}}
+                {{parsePitchClass(audioFeatures.key)}}
                 </div> 
                 <div class="info-name">
                   Key
@@ -45,7 +45,7 @@
           </div>
           <div class="info">
             <div class="info-value">
-               {{audiFeatures.mode === 1? 'Major' : 'Minor'}}
+               {{audioFeatures.mode === 1? 'Major' : 'Minor'}}
                 </div> 
                 <div class="info-name">
                  Modality
@@ -56,7 +56,7 @@
           <div class="track-info-data">
           <div class="info">
               <div class="info-value">
-               {{audiFeatures.time_signature}}
+               {{audioFeatures.time_signature}}
                 </div> 
                 <div class="info-name">
                  Time Signature
@@ -64,7 +64,7 @@
           </div>
           <div class="info">
               <div class="info-value">
-               {{Math.round(audiFeatures.tempo)}}
+               {{Math.round(audioFeatures.tempo)}}
                 </div> 
                 <div class="info-name">
                  Tempo (BPM)
@@ -79,11 +79,13 @@
                 </div> 
           </div>
       </div>
+      <BarChart :features="audioFeatures"/>
     </div>
   </div>
 </template>
 <script>
 import Loader from "./Loader";
+import BarChart from "./BarChart";
 import { getTrack, getTrackAudioFeatures} from "../spotify";
 import { catchErrors, formatDuration, parsePitchClass} from "../utils";
 export default {
@@ -95,7 +97,7 @@ export default {
       trackId: this.$route.params.trackId,
       dataReady: false,
       trackInfo: null,
-      audiFeatures: null
+      audioFeatures: null
     };
   },
   methods: {
@@ -103,10 +105,10 @@ export default {
       let trackInfoRes = await getTrack(this.trackId);
       let audioFeaturesRes = await getTrackAudioFeatures(this.trackId);
       this.trackInfo = trackInfoRes.data;
-      this.audiFeatures = audioFeaturesRes.data;
+      this.audioFeatures = audioFeaturesRes.data;
       this.dataReady = true;
       console.log("Res->", this.trackInfo);
-      console.log("Res->", this.audiFeatures);
+      console.log("Res->", this.audioFeatures);
     },
     openSpotifyLink: function(url){
         return url;
@@ -116,6 +118,7 @@ export default {
   },
   components: {
     Loader,
+    BarChart
   },
 };
 </script>
