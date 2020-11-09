@@ -79,7 +79,7 @@
                 </div> 
           </div>
       </div>
-      <BarChart :features="audioFeatures"/>
+      <BarChart :features="audioFeatures" isPlaylist="false"/>
     </div>
   </div>
 </template>

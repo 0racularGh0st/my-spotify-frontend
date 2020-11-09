@@ -10,6 +10,7 @@
                 <h2>{{playlistInfo.name}}</h2>
                 <p class="playlist-owner">By {{playlistInfo.owner.display_name}}</p>
                 <p class="no-of-tracks">{{playlistInfo.tracks.total}} Tracks</p>
+                <BarChart :features="averageFeatures" isPlaylist="true"/>
              </div>
              <div class="playlist-tracks-container">
             <a
@@ -49,7 +50,8 @@
 </template>
 <script>
 import Loader from "./Loader";
-import { getPlaylist, getPlaylistTracks } from "../spotify";
+import BarChart from "./BarChart";
+import { getPlaylist, getPlaylistTracks, getAudioFeaturesForTracks } from "../spotify";
 import { catchErrors, getTrackHrefValue, formatDuration} from "../utils";
 export default {
   created() {
@@ -60,7 +62,9 @@ export default {
       playlistId: this.$route.params.playlistId,
       dataReady: false,
       playlistInfo: null,
-      playlistTracks: null
+      playlistTracks: null,
+      audioFeatures : null,
+      averageFeatures: {}
     };
   },
   methods: {
@@ -69,15 +73,44 @@ export default {
       let playlistTracksRes = await getPlaylistTracks(this.playlistId);
       this.playlistInfo = playlistInfoRes.data;
       this.playlistTracks = playlistTracksRes.data;
+      let audioFeaturesRes = await getAudioFeaturesForTracks(this.playlistTracks.items);
+      this.audioFeatures = audioFeaturesRes.data;
+      let averageFeaturesResult = await this.generateAverageFeatures(this.audioFeatures.audio_features);
+      this.averageFeatures = averageFeaturesResult;
       this.dataReady = true;
       console.log("Res->", this.playlistInfo);
       console.log("Res->", this.playlistTracks);
+      console.log("RES->", this.audioFeatures);
     },
     getTrackHrefValue : getTrackHrefValue,
-    formatDuration: formatDuration
+    formatDuration: formatDuration,
+    generateAverageFeatures: function(audio_features){
+        let acousticness = 0;
+        let danceability = 0;
+        let energy = 0;
+        let instrumentalness = 0;
+        let liveness = 0;
+        let speechiness = 0;
+        let valence = 0; 
+        acousticness = (this.getSum(audio_features,'acousticness')/audio_features.length).toFixed(3);
+        danceability = (this.getSum(audio_features,'danceability')/audio_features.length).toFixed(3);
+        energy = (this.getSum(audio_features,'energy')/audio_features.length).toFixed(3);
+        instrumentalness = (this.getSum(audio_features,'instrumentalness')/audio_features.length).toFixed(3);
+        liveness = (this.getSum(audio_features,'liveness')/audio_features.length).toFixed(3);
+        speechiness = (this.getSum(audio_features,'speechiness')/audio_features.length).toFixed(3);
+        valence = (this.getSum(audio_features,'valence')/audio_features.length).toFixed(3);
+        return {acousticness,danceability,energy,instrumentalness,liveness,speechiness,valence};
+    },
+    getSum: function(items,field){
+        let sum = 0;
+        for(var i=0; i< items.length ; i++){
+            sum+=items[i][field];
+        }
+        return sum;
+    }
   },
   components: {
-    Loader
+    Loader,BarChart
   },
 };
 </script>

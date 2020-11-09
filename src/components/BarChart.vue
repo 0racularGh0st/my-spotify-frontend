@@ -4,10 +4,11 @@
 <script>
 const Chart = window.Chart;
 export default {
-    props: ['features'],
+    props: ['features','isPlaylist'],
     data(){
         return {
-            audioFeatures: this.features
+            audioFeatures: this.features,
+            playlist: this.isPlaylist
         }
     },
     mounted(){
@@ -17,7 +18,7 @@ new Chart(ctx, {
     data: {
         labels: ['Acousticness', 'Danceability', 'Energy', 'Instrumentalness', 'Liveness', 'Speechiness','Valence'],
         datasets: [{
-            label: 'Audio Features',
+            label: this.playlist=="true"? 'Playlist Audio Features': 'Audio Features',
             data: [this.audioFeatures.acousticness, this.audioFeatures.danceability,this.audioFeatures.energy, this.audioFeatures.instrumentalness,this.audioFeatures.liveness,this.audioFeatures.speechiness, this.audioFeatures.valence],
             backgroundColor: [
                 '#1ba74b',
