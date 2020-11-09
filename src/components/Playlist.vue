@@ -11,8 +11,12 @@
         <div
           class="my-playlist-container"
         >
-          <div class="playlist-inner"  v-for="(item, index) in myPlaylist.items"
-          v-bind:key="index">
+          <a class="playlist-inner"  v-for="(item, index) in myPlaylist.items"
+          v-bind:key="index"
+          :href="getPlaylistHrefValue(item.id)"
+          >
+              
+          <div class="track-art-info-container">
               <img
             :src="item.images[0].url"
             alt="playlist-art"
@@ -20,9 +24,13 @@
             height="200"
             width="200"
           />
+              <div class="info-overlay-container">
+                <img src="../assets/info.png" height="50" width="50" class="info-overlay"/>
+              </div>
+            </div>
           <div class="playlist-name">{{ item.name }}</div>
           <div class="number_tracks">{{item.tracks.total}} Tracks</div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -33,7 +41,7 @@ import Loader from "./Loader";
 import {
   getPlaylists
 } from "../spotify";
-import { catchErrors } from "../utils";
+import { catchErrors, getPlaylistHrefValue} from "../utils";
 export default {
   created() {
     catchErrors(this.getMyPlaylists());
@@ -49,6 +57,7 @@ export default {
       );
       this.dataReady = true;
     },
+    getPlaylistHrefValue: getPlaylistHrefValue
   },
   data() {
     return {
@@ -66,6 +75,12 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
+    &:hover{
+    .info-overlay-container{
+      opacity: 1;
+    }
+  }
 }
 .top-artists {
   position: relative;
@@ -75,6 +90,12 @@ export default {
 }
 .playlist-inner{
     display: inline-flex;
+     text-decoration: none;
+     &:hover{
+    .info-overlay-container{
+      opacity: 1;
+    }
+  }
 }
 @media screen and (min-width: 769px) {
     .playlist-name {
@@ -101,6 +122,12 @@ export default {
       margin-bottom: 3rem;
       margin-left: 1rem;
     margin-right: 1rem;
+    text-decoration: none;
+    &:hover{
+    .info-overlay-container{
+      opacity: 1;
+    }
+  }
   }
   .my-playlist-heading {
     color: var(--main-white);
@@ -118,6 +145,13 @@ export default {
     border-radius: 50%;
     box-shadow: 0 0 20px -8px var(--alt-white);
   }
+  .track-art-info-container{
+    width: 150px;
+    height: 150px;
+  display: inline-block;
+    position: relative;
+  margin-right: 15px;
+}
 }
 
 @media screen and (max-width: 768px) {
@@ -145,6 +179,12 @@ export default {
       margin-bottom: 2rem;
           margin-left: 0.75rem;
     margin-right: 0.75rem;
+    text-decoration: none;
+    &:hover{
+    .info-overlay-container{
+      opacity: 1;
+    }
+  }
   }
   .my-playlist-heading {
     color: var(--main-white);
@@ -159,6 +199,13 @@ export default {
     border-radius: 50%;
     box-shadow: 0 0 20px -8px var(--alt-white);
   }
+  .track-art-info-container{
+    width: 100px;
+    height: 100px;
+  display: inline-block;
+    position: relative;
+  margin-right: 15px;
+}
 }
 
 .content-container {
@@ -169,5 +216,28 @@ export default {
   padding-right: 1rem;
   padding-left: 1rem;
 }
+}
+.info-overlay{
+  height: 30px;
+  width: 30px;
+}
+.info-overlay-container{
+  display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    color: rgb(255, 255, 255);
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: 50%;
 }
 </style>
