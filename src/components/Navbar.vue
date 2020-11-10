@@ -18,6 +18,7 @@
           rel="noopener noreferrer"
           aria-label=""
           class="nav-item"
+          @click="trackActive('profile')"
         >
           <img
             src="../assets/profile.svg"
@@ -35,6 +36,7 @@
           rel="noopener noreferrer"
           aria-label=""
           class="nav-item"
+          @click="trackActive('top_tracks')"
         >
           <img
             src="../assets/tracks.svg"
@@ -52,6 +54,7 @@
           rel="noopener noreferrer"
           aria-label=""
           class="nav-item"
+          @click="trackActive('top_artists')"
         >
           <img
             src="../assets/artists.svg"
@@ -69,6 +72,7 @@
           rel="noopener noreferrer"
           aria-label=""
           class="nav-item"
+          @click="trackActive('recent')"
         >
           <img
             src="../assets/recent.svg"
@@ -86,6 +90,7 @@
           rel="noopener noreferrer"
           aria-label=""
           class="nav-item"
+          @click="trackActive('playlist')"
         >
           <img
             src="../assets/playlist.svg"
@@ -117,11 +122,21 @@ const navItems = () => {
 };
 export default {
   data() {
-    return {};
+    return {
+      prevActive: null
+    }
   },
   mounted() {
     navItems();
   },
+  methods: {
+    trackActive: function(id){
+        if(this.prevActive!==null){
+          document.getElementById(this.prevActive).classList.remove("isactive");
+        }
+        this.prevActive=id;
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -177,7 +192,7 @@ export default {
       width: 0%;
       background: var(--alt-green);
       position: absolute;
-      transition: width 0.3s ease;
+      transition: opacity 0.3s ease;
       opacity: 0;
       top: 0;
     }
@@ -203,7 +218,7 @@ export default {
       background: var(--alt-green);
       position: absolute;
       top: 0;
-      transition: height 0.3s ease;
+      transition: opacity 0.3s ease;
       opacity: 1;
     }
   }

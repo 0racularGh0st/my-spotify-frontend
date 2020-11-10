@@ -106,3 +106,4 @@ dist
 #mac generated files
 .DS_Store
 src/.DS_Store
+.firebase/*
