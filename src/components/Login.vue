@@ -10,7 +10,7 @@
         alt="logo"
       />
       <h1 class="app-name">My Spotify Profile</h1>
-      <a href="http://localhost:8888/login" rel="noopener noreferrer" class="login-button"
+      <a href="https://my-spotify-backend-service.herokuapp.com/login" rel="noopener noreferrer" class="login-button"
         ><h2 class="login">Login with Spotify</h2></a
       >
       <h3 class="disclaimer">
