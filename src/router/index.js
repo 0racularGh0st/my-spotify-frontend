@@ -49,6 +49,11 @@ const routes = [
     path: '/playlist/:playlistId',
     name: 'PlaylistInfo',
     component: () => import(/* webpackChunkName: "playlistInfo" */ '../components/PlaylistInfo.vue')
+  },
+  {
+    path: '/recommendations/:playlistId',
+    name: 'Recommendations',
+    component: () => import(/* webpackChunkName: "recommendations" */ '../components/Recommendations.vue')
   }
 
 ]

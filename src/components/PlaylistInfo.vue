@@ -10,6 +10,9 @@
                 <h2>{{playlistInfo.name}}</h2>
                 <p class="playlist-owner">By {{playlistInfo.owner.display_name}}</p>
                 <p class="no-of-tracks">{{playlistInfo.tracks.total}} Tracks</p>
+                <div class="theme-button-filled">
+                  <a :href="getRecommendationsHrefValue(playlistInfo.id)" >GET RECOMMENDATIONS</a>
+                </div>
                 <BarChart :features="averageFeatures" isPlaylist="true"/>
              </div>
              <div class="playlist-tracks-container">
@@ -52,7 +55,7 @@
 import Loader from "./Loader";
 import BarChart from "./BarChart";
 import { getPlaylist, getPlaylistTracks, getAudioFeaturesForTracks } from "../spotify";
-import { catchErrors, getTrackHrefValue, formatDuration} from "../utils";
+import { catchErrors, getTrackHrefValue, formatDuration, getRecommendationsHrefValue} from "../utils";
 export default {
   created() {
     catchErrors(this.getPlaylistInfo());
@@ -84,6 +87,7 @@ export default {
     },
     getTrackHrefValue : getTrackHrefValue,
     formatDuration: formatDuration,
+    getRecommendationsHrefValue: getRecommendationsHrefValue,
     generateAverageFeatures: function(audio_features){
         let acousticness = 0;
         let danceability = 0;

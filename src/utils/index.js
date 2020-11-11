@@ -83,6 +83,9 @@ export const getHashParams = () => {
   export const getPlaylistHrefValue = playlistId => {
     return `/playlist/${playlistId}`;
   }
+  export const getRecommendationsHrefValue = playlistId => {
+    return `/recommendations/${playlistId}`;
+  }
   export const formatWithCommas = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   
   // Higher-order function for async/await error handling
