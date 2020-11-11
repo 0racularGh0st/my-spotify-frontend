@@ -70,8 +70,6 @@ export default {
       let following = await doesUserFollowArtist(this.artistId);
       this.isFollowing = following.data[0];
       this.dataReady = true;
-      console.log("Res->", this.artistInfo);
-      console.log("following->", this.isFollowing);
     },
     followArtistNow: async function(){
         let res = await followArtist(this.artistInfo.id);

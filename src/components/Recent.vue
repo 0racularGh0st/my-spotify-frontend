@@ -53,7 +53,6 @@ export default {
     getRecent: async function () {
       let res = await getRecentlyPlayed();
       this.recentlyPlayed = res.data;
-      console.log("Res->", this.recentlyPlayed);
       this.dataReady = true;
     },
     formatDuration: formatDuration,

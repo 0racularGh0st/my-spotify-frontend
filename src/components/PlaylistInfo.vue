@@ -81,9 +81,6 @@ export default {
       let averageFeaturesResult = await this.generateAverageFeatures(this.audioFeatures.audio_features);
       this.averageFeatures = averageFeaturesResult;
       this.dataReady = true;
-      console.log("Res->", this.playlistInfo);
-      console.log("Res->", this.playlistTracks);
-      console.log("RES->", this.audioFeatures);
     },
     getTrackHrefValue : getTrackHrefValue,
     formatDuration: formatDuration,

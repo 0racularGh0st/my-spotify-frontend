@@ -51,10 +51,6 @@ export default {
     getMyPlaylists: async function () {
       let res = await getPlaylists();
       this.myPlaylist = res.data;
-      console.log(
-        "Res->",
-        this.myPlaylist
-      );
       this.dataReady = true;
     },
     getPlaylistHrefValue: getPlaylistHrefValue

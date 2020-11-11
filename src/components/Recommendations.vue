@@ -81,9 +81,7 @@ export default {
       if(this.currentPlaylist){
           const {data} = await getRecommendationsForTracks(this.currentPlaylist.tracks.items);
           this.recTracks = data;
-          console.log("Rec Tracks->", this.recTracks);
           const uris = getTrackUris(this.recTracks).join(',');
-          console.log("URIS->", uris);
           this.uris = uris;
            this.dataReady = true;
       }
@@ -94,9 +92,7 @@ export default {
         if(this.currentPlaylist){
             let userRes = await getUser();
         this.user = userRes.data;
-        console.log("User->", this.user);
         const name = `Recommended Tracks Based on ${this.currentPlaylist.name}`;
-        console.log("Name->",name);
         if(this.user){
             const { data } = await createPlaylist(this.user.id, name);
             this.recPlaylistId = data.id;

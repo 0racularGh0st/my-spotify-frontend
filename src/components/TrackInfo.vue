@@ -107,8 +107,6 @@ export default {
       this.trackInfo = trackInfoRes.data;
       this.audioFeatures = audioFeaturesRes.data;
       this.dataReady = true;
-      console.log("Res->", this.trackInfo);
-      console.log("Res->", this.audioFeatures);
     },
     openSpotifyLink: function(url){
         return url;

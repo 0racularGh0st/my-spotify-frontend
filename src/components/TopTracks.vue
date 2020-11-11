@@ -76,12 +76,6 @@ export default {
       this.topTracksMedium = resMedium.data;
       this.topTracksShort = resShort.data;
       this.topTracksSelected = this.topTracksLong;
-      console.log(
-        "Res->",
-        this.topTracksLong,
-        this.topTracksMedium,
-        this.topTracksShort
-      );
       this.dataReady = true;
     },
     formatDuration: formatDuration,

@@ -133,8 +133,6 @@ export default {
         topArtists,
         topTracks
       );
-      console.log(user, followedArtists, playlists, topArtists, topTracks);
-      console.log("The User is:", this.user);
     },
     assignData: async function (
       user,

@@ -80,12 +80,6 @@ export default {
       this.topArtistsMedium = resMedium.data;
       this.topArtistsShort = resShort.data;
       this.topArtistsSelected = this.topArtistsLong;
-      console.log(
-        "Res->",
-        this.topArtistsLong,
-        this.topArtistsMedium,
-        this.topArtistsShort
-      );
       this.dataReady = true;
     },
     getArtistHrefValue: getArtistHrefValue,
