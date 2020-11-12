@@ -5,7 +5,7 @@
     </div>
     <div class="content-container" v-if="dataReady">
        <div class="artist-art-name-container">
-            <img :src="artistInfo.images[1].url" height="250" width="250" alt="artist-art" class="artist-art"/>
+            <img :src="artistInfo.images[1] && artistInfo.images[1].url || dummypic" height="250" width="250" alt="artist-art" class="artist-art"/>
             <div>
                 <h1>{{artistInfo.name}}</h1>
             </div>
@@ -51,6 +51,7 @@
 import Loader from "./Loader";
 import { getArtist, doesUserFollowArtist, followArtist} from "../spotify";
 import { catchErrors} from "../utils";
+import dummypic from '../assets/dummypic.png';
 export default {
   created() {
     catchErrors(this.getArtistData());
@@ -60,7 +61,8 @@ export default {
       artistId: this.$route.params.artistId,
       dataReady: false,
       artistInfo: null,
-      isFollowing: null
+      isFollowing: null,
+      dummypic: dummypic
     };
   },
   methods: {

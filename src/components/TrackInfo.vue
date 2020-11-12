@@ -7,7 +7,7 @@
       <div class="info-container">
         <div class="album-art">
           <img
-            :src="trackInfo.album.images[1].url"
+            :src="trackInfo.album.images[1] && trackInfo.album.images[1].url || dummypic"
             alt="album-art"
             height="220"
             width="220"
@@ -88,6 +88,7 @@ import Loader from "./Loader";
 import BarChart from "./BarChart";
 import { getTrack, getTrackAudioFeatures} from "../spotify";
 import { catchErrors, formatDuration, parsePitchClass} from "../utils";
+import dummypic from '../assets/dummypic.png';
 export default {
   created() {
     catchErrors(this.getTrackData());
@@ -97,7 +98,8 @@ export default {
       trackId: this.$route.params.trackId,
       dataReady: false,
       trackInfo: null,
-      audioFeatures: null
+      audioFeatures: null,
+      dummypic : dummypic
     };
   },
   methods: {

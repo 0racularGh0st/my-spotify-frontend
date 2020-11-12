@@ -14,7 +14,7 @@
         >
           <div class="track-art-info-container">
               <img
-              :src="item.track.album.images[2].url"
+              :src="item.track.album.images[2] && item.track.album.images[2].url||dummypic"
               height="50"
               width="50"
               alt="track-art"
@@ -44,6 +44,7 @@
 import Loader from "./Loader";
 import { getRecentlyPlayed } from "../spotify";
 import { catchErrors, formatDuration, getTrackHrefValue} from "../utils";
+import dummypic from '../assets/dummypic.png';
 export default {
   created() {
     catchErrors(this.getRecent());
@@ -62,6 +63,7 @@ export default {
     return {
       recentlyPlayed: null,
       dataReady: false,
+      dummypic: dummypic
     };
   },
   components: {

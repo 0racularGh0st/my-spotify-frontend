@@ -20,7 +20,7 @@
           >
             <div class="track-art-info-container">
               <img
-              :src="item.album.images[2].url"
+              :src="item.album.images[2] && item.album.images[2].url || dummypic"
               height="50"
               width="50"
               alt="track-art"
@@ -54,6 +54,7 @@
 </template>
 <script>
 import Loader from "./Loader";
+import dummypic from '../assets/dummypic.png';
 import { getPlaylist, getRecommendationsForTracks, getUser, createPlaylist, addTracksToPlaylist, followPlaylist, doesUserFollowPlaylist} from "../spotify";
 import { catchErrors, getTrackHrefValue, formatDuration} from "../utils";
 const getTrackUris = recommendations => recommendations.tracks.map(({ uri }) => uri);
@@ -70,14 +71,14 @@ export default {
       user: null,
       recPlaylistId: null,
       uris: null,
-      isFollowing: false
+      isFollowing: false,
+      dummypic: dummypic
     };
   },
   methods: {
     getPlaylistData: async function () {
       let currPlaylistRes = await getPlaylist(this.playlistId);
       this.currentPlaylist = currPlaylistRes.data;
-      console.log("Res->", this.currentPlaylist);
       if(this.currentPlaylist){
           const {data} = await getRecommendationsForTracks(this.currentPlaylist.tracks.items);
           this.recTracks = data;

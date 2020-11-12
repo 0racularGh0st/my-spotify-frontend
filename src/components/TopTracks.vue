@@ -26,7 +26,7 @@
           >
             <div class="track-art-info-container">
               <img
-              :src="item.album.images[2].url"
+              :src="item.album.images[2] && item.album.images[2].url || dummypic"
               height="50"
               width="50"
               alt="track-art"
@@ -60,6 +60,7 @@ import {
   getTopTracksShort,
 } from "../spotify";
 import { catchErrors, formatDuration, getTrackHrefValue} from "../utils";
+import dummypic from '../assets/dummypic.png';
 export default {
   created() {
     catchErrors(this.getTopTracks());
@@ -109,6 +110,7 @@ export default {
       topTracksSelected: null,
       prevSelected: "duration-long",
       dataReady: false,
+      dummypic: dummypic
     };
   },
   components: {

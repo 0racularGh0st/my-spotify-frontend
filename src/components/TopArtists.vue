@@ -41,7 +41,7 @@
               
           <div class="track-art-info-container">
               <img
-              :src="item.images[2].url"
+              :src="item.images[2] && item.images[2].url || dummypic"
               height="50"
               width="50"
               alt="artist-art"
@@ -66,6 +66,7 @@ import {
   getTopArtistsShort,
 } from "../spotify";
 import { catchErrors, getArtistHrefValue } from "../utils";
+import dummypic from '../assets/dummypic.png';
 export default {
   created() {
     catchErrors(this.getTopArtists());
@@ -117,6 +118,7 @@ export default {
       topArtistsSelected: null,
       prevSelected: "duration-long",
       dataReady: false,
+      dummypic: dummypic
     };
   },
   components: {

@@ -12,7 +12,7 @@
       <h1 class="app-name">My Spotify Profile</h1>
       <a href="https://nigeldavid.in" target="_blank" rel="noopener noreferrer" class="my-website-link"><p class="my-website-by">Developed By </p><p class="my-website">Nigel David Tariang</p></a>
       <a href="https://my-spotify-backend-service.herokuapp.com/login" rel="noopener noreferrer" class="login-button"
-        ><h4 class="login">Login with Spotify</h4></a
+        ><div class="login">Login with Spotify</div></a
       >
       <p class="disclaimer">
         Note: Login process is done through Spotify's official authorization flow. No
@@ -44,15 +44,17 @@
   color: var(--main-white);
 }
 .login {
-  background:var(--alt-green);
+  background:#14863c;
   width: max-content;
   margin: auto;
   padding: .7rem 2rem;
   border-radius: 2rem;
   transition: all 0.3s ease;
+  font-size: 16px;
+  font-weight: 600;
 }
 .login:hover{
-  background: var(--main-green);
+  background: var(--alt-green);
 }
 .disclaimer {
   color: var(--main-white);

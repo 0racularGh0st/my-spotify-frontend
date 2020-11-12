@@ -6,7 +6,7 @@
     <div class="user-container content-container" v-if="dataReady">
       <div class="user-overview">
         <img
-          :src="user.images[0]!==undefined?user.images[0].url : dummyPic"
+          :src="user.images[0] && user.images[0].url || dummyPic"
           height="192"
           width="192"
           aria-label="user-pic"
@@ -47,7 +47,7 @@
             >
             <div class="track-art-info-container">
               <img
-              :src="item.album.images[2].url"
+              :src="item.album.images[2] && item.album.images[2].url || dummyPic"
               height="50"
               width="50"
               alt="track-art"
@@ -80,7 +80,7 @@
           >
             <div class="track-art-info-container">
               <img
-              :src="item.images[2].url"
+              :src="item.images[2] && item.images[2].url || dummyPic"
               height="50"
               width="50"
               alt="artist-art"

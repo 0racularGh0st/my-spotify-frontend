@@ -6,7 +6,7 @@
          <div class="content-container" v-if="dataReady">
              <div class="info-container">
                  <div class="playlist-info-container">
-                <img :src="playlistInfo.images[0].url" height="200" width="200" alt="playlist-art" class="playlist-art"/>
+                <img :src="playlistInfo.images[0] && playlistInfo.images[0].url || dummypic" height="200" width="200" alt="playlist-art" class="playlist-art"/>
                 <h2>{{playlistInfo.name}}</h2>
                 <p class="playlist-owner">By {{playlistInfo.owner.display_name}}</p>
                 <p class="no-of-tracks">{{playlistInfo.tracks.total}} Tracks</p>
@@ -24,7 +24,7 @@
             >
             <div class="track-art-info-container">
               <img
-              :src="item.track.album.images[2].url"
+              :src="item.track.album.images[2] && item.track.album.images[2].url || dummypic"
               height="50"
               width="50"
               alt="track-art"
@@ -54,6 +54,7 @@
 <script>
 import Loader from "./Loader";
 import BarChart from "./BarChart";
+import dummypic from '../assets/dummypic.png';
 import { getPlaylist, getPlaylistTracks, getAudioFeaturesForTracks } from "../spotify";
 import { catchErrors, getTrackHrefValue, formatDuration, getRecommendationsHrefValue} from "../utils";
 export default {
@@ -67,7 +68,8 @@ export default {
       playlistInfo: null,
       playlistTracks: null,
       audioFeatures : null,
-      averageFeatures: {}
+      averageFeatures: {},
+      dummypic: dummypic
     };
   },
   methods: {

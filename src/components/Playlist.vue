@@ -18,7 +18,7 @@
               
           <div class="track-art-info-container">
               <img
-            :src="item.images[0].url"
+            :src="item.images[0] && item.images[0].url || dummypic"
             alt="playlist-art"
             class="playlist-art"
             height="200"
@@ -42,6 +42,7 @@ import {
   getPlaylists
 } from "../spotify";
 import { catchErrors, getPlaylistHrefValue} from "../utils";
+import dummypic from '../assets/dummypic.png';
 export default {
   created() {
     catchErrors(this.getMyPlaylists());
@@ -59,6 +60,7 @@ export default {
     return {
       myPlaylist: null,
       dataReady: false,
+      dummypic: dummypic
     };
   },
   components: {
