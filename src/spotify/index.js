@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { getHashParams } from '../utils';
-const backend_uri = "https://my-spotify-backend-service.herokuapp.com";
+import config from "../config";
+const backend_uri = config.BACKEND_URI;
 // TOKENS ******************************************************************************************
 const EXPIRATION_TIME = 3600 * 1000; // 3600 seconds * 1000 = 1 hour in milliseconds
 

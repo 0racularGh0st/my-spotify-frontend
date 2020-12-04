@@ -11,7 +11,7 @@
       />
       <h1 class="app-name">My Spotify Profile</h1>
       <a href="https://nigeldavid.in" target="_blank" rel="noopener noreferrer" class="my-website-link"><p class="my-website-by">Developed By </p><p class="my-website">Nigel David Tariang</p></a>
-      <a href="https://my-spotify-backend-service.herokuapp.com/login" rel="noopener noreferrer" class="login-button"
+      <a :href="loginUrl" rel="noopener noreferrer" class="login-button"
         ><div class="login">Login with Spotify</div></a
       >
       <p class="disclaimer">
@@ -21,6 +21,16 @@
     </div>
   </div>
 </template>
+<script>
+import config from '../config';
+export default {
+  data(){
+    return {
+      loginUrl: config.LOGIN_URI
+    }
+  }
+}
+</script>
 <style lang="scss" scoped>
 .login-page {
   position: relative;
