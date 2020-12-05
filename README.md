@@ -16,7 +16,6 @@ https://github.com/0racularGh0st/my-spotify-backend
  BACKEND_URI: "http://localhost:8888",  
  LOGIN_URI: "http://localhost:8888/login"
 ```
-
 ## Project setup
 ```
 npm install
@@ -31,3 +30,5 @@ npm run serve
 ```
 npm run build
 ```
+# Credits
+Thanks to Brittany Chiang for the design. Do check out her React Version at https://github.com/bchiang7/spotify-profile
